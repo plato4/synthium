@@ -17,7 +17,15 @@ export const createSynth = () => {
     release,
   });
 
-  osc.connect(amp);
+  const hpFreq = 0;
+  const hp = new Tone.Filter(hpFreq, "highpass");
+
+  const lpFreq = 1500;
+  const lp = new Tone.Filter(lpFreq, "lowpass");
+
+  osc.connect(hp);
+  hp.connect(lp);
+  lp.connect(amp);
   amp.toDestination();
 
   return {
@@ -25,8 +33,10 @@ export const createSynth = () => {
       Tone.start();
       amp.triggerAttackRelease("8t");
     },
-    oscillator: osc,
+    osc,
     amp,
+    hp,
+    lp,
   };
 
   /*//LFO

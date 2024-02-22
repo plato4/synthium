@@ -3,6 +3,7 @@ import { Button, Grid, Paper } from "@mui/material";
 import PanelOscillator from "./PanelOscillator";
 import { createSynth } from "../createSynth";
 import PanelEnvelope from "./PanelEnvelope";
+import PanelFilter from "./PanelFilter";
 
 const Synthesizer = () => {
   const [synth, setSynth] = useState(createSynth());
@@ -10,16 +11,23 @@ const Synthesizer = () => {
     <Grid container spacing={2}>
       <Grid item xs={6}>
         <Paper>
-          <PanelOscillator oscillator={synth.oscillator} />
+          <PanelOscillator osc={synth.osc} />
         </Paper>
       </Grid>
       <Grid item xs={6}>
         <Paper>
-          <PanelEnvelope envelope={synth.amp} />
+          <PanelEnvelope env={synth.amp} />
         </Paper>
       </Grid>
-      <Grid item xs={4}>
-        <Paper>xs=4</Paper>
+      <Grid item xs={2}>
+        <Paper>
+          <PanelFilter filter={synth.hp} name={"HP"} />
+        </Paper>
+      </Grid>
+      <Grid item xs={2}>
+        <Paper>
+          <PanelFilter filter={synth.lp} name={"LP"} />
+        </Paper>
       </Grid>
       <Grid item xs={8}>
         <Paper>

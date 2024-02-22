@@ -2,19 +2,10 @@ import React, { useState } from "react";
 
 import * as Tone from "tone";
 import "./paneloscillator.css";
-import {
-  FormControl,
-  Grid,
-  InputLabel,
-  MenuItem,
-  Select,
-  SelectChangeEvent,
-} from "@mui/material";
+import { FormControl, Grid, InputLabel, MenuItem, Select } from "@mui/material";
 
-const PanelOscillator: React.FC<{ oscillator: Tone.Oscillator }> = ({
-  oscillator,
-}) => {
-  const [wave, setWave] = useState(oscillator.type);
+const PanelOscillator: React.FC<{ osc: Tone.Oscillator }> = ({ osc }) => {
+  const [wave, setWave] = useState(osc.type);
 
   return (
     <Grid container spacing={2} className="panel-oscillator-grid-container">
@@ -28,11 +19,11 @@ const PanelOscillator: React.FC<{ oscillator: Tone.Oscillator }> = ({
           <Select
             labelId="wave-select-label"
             className="wave-select"
-            value={oscillator.type}
+            value={osc.type}
             label="Wave"
             onChange={(event) => {
-              oscillator.type = event.target.value as Tone.ToneOscillatorType;
-              setWave(oscillator.type);
+              osc.type = event.target.value as Tone.ToneOscillatorType;
+              setWave(osc.type);
             }}
           >
             <MenuItem value="sine">Sine</MenuItem>
