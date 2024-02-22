@@ -1,6 +1,7 @@
 import { Grid, Slider } from "@mui/material";
 import React, { useState } from "react";
 import * as Tone from "tone";
+import "./panelfilter.css";
 
 const PanelFilter: React.FC<{ filter: Tone.Filter; name: string }> = ({
   filter,
@@ -10,7 +11,7 @@ const PanelFilter: React.FC<{ filter: Tone.Filter; name: string }> = ({
     filter.frequency.value.valueOf() as number
   );
   return (
-    <Grid container spacing={2} className="panel-envelope-grid-container">
+    <Grid container spacing={2} className="panel-filter-grid-container">
       <Grid item xs={12}>
         {name}
       </Grid>
@@ -20,6 +21,7 @@ const PanelFilter: React.FC<{ filter: Tone.Filter; name: string }> = ({
           orientation="vertical"
           defaultValue={filter.frequency.value.valueOf() as number}
           valueLabelDisplay="auto"
+          className="panel-filter-slider"
           max={1500}
           min={0}
           step={10}

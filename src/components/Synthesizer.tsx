@@ -8,17 +8,13 @@ import PanelFilter from "./PanelFilter";
 const Synthesizer = () => {
   const [synth, setSynth] = useState(createSynth());
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={4}>
       <Grid item xs={6}>
         <Paper>
           <PanelOscillator osc={synth.osc} />
         </Paper>
       </Grid>
-      <Grid item xs={6}>
-        <Paper>
-          <PanelEnvelope env={synth.amp} />
-        </Paper>
-      </Grid>
+
       <Grid item xs={2}>
         <Paper>
           <PanelFilter filter={synth.hp} name={"HP"} />
@@ -27,6 +23,11 @@ const Synthesizer = () => {
       <Grid item xs={2}>
         <Paper>
           <PanelFilter filter={synth.lp} name={"LP"} />
+        </Paper>
+      </Grid>
+      <Grid item xs={6}>
+        <Paper>
+          <PanelEnvelope env={synth.amp} />
         </Paper>
       </Grid>
       <Grid item xs={8}>
